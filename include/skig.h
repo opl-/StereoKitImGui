@@ -1,3 +1,5 @@
+#pragma once
+
 #include <stereokit.h>
 
 namespace skig {
