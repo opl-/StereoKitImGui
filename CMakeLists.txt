@@ -15,7 +15,7 @@ include("cmake/CPM.cmake")
 CPMAddPackage(
   NAME StereoKitC
   GITHUB_REPOSITORY maluoi/StereoKit
-  GIT_TAG dd1f7f65f33df010c9838a25ffe0b5ad57ae3ae0 # /develop branch
+  GIT_TAG v0.3.4
   OPTIONS
     "SK_BUILD_TESTS OFF"
     "SK_BUILD_SHARED_LIBS ON"
