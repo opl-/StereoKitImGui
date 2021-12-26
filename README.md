@@ -43,7 +43,7 @@ During application exit, or when you want to free memory used by ImGui:
 
 Changing the StereoKit or ImGui version can be done using `CMakeLists.txt`. This might become configurable in the future.
 
-This repository contains a prebuilt [`imgui_shader.hlsl.h`](https://github.com/maluoi/sk_gpu/blob/master/skshader_editor/imgui_shader.hlsl.h) from [sk_gpu](https://github.com/maluoi/sk_gpu). If using a different version of StereoKit, you might need to copy a compiled version or build it manually using the shader compiler or editor available, both of which are available from that repository.
+This repository contains a prebuilt [`imgui_shader.hlsl.h`](https://github.com/maluoi/sk_gpu/blob/master/skshader_editor/imgui_shader.hlsl.h) from [sk_gpu](https://github.com/maluoi/sk_gpu). If using a different version of StereoKit, you might need to copy a precompiled version, or build it manually using the shader compiler or editor, both of which are available in that repository.
 
 Use CMake to generate the build configuration and run the build:
 
