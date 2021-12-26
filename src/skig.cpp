@@ -4,6 +4,7 @@
  */
 
 #include <stdlib.h>
+#include <skig.h>
 #include <string>
 #include <stereokit.h>
 #include <stereokit_ui.h>
