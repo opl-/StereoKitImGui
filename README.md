@@ -67,6 +67,8 @@ You can use these options to adjust the build:
 
 - `-D CMAKE_BUILD_TYPE=Debug` to include debug symbols.
 
+- `-D SKIG_USE_CIMGUI` to link against [cimgui](https://github.com/cimgui/cimgui) instead of [ImGui](https://github.com/ocornut/imgui).
+
 
 ## Using in your project
 

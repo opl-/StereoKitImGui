@@ -1,6 +1,8 @@
 cmake_minimum_required(VERSION 3.10)
 project(StereoKitImGui VERSION "1.0.0" LANGUAGES CXX C)
 
+option(SKIG_USE_CIMGUI "Link against CImGui instead of ImGui" OFF)
+
 # Get dependencies using CPM, this is grabbing StereoKit
 # from the Github repository. You may want to consider 
 # setting the CPM_SOURCE_CACHE environment variable as
@@ -20,45 +22,25 @@ CPMAddPackage(
     "BUILD_WITH_XCB_HEADERS OFF"
 )
 
-CPMAddPackage(
-  NAME ImGui
-  GITHUB_REPOSITORY ocornut/imgui
-  GIT_TAG v1.85
-)
+list(APPEND SKIG_LIBRARIES "StereoKitC")
 
 # ImGui #
 
-set(IMGUI_SOURCES
-  ${ImGui_SOURCE_DIR}/imgui.cpp
-  ${ImGui_SOURCE_DIR}/imgui_draw.cpp
-  ${ImGui_SOURCE_DIR}/imgui_tables.cpp
-  ${ImGui_SOURCE_DIR}/imgui_widgets.cpp
-  ${ImGui_SOURCE_DIR}/misc/cpp/imgui_stdlib.cpp
-)
+if(SKIG_USE_CIMGUI)
+  CPMAddPackage(
+    NAME cimgui
+    GITHUB_REPOSITORY cimgui/cimgui
+    GIT_TAG 1.85
+  )
 
-set(IMGUI_PUBLIC_HEADERS
-  ${ImGui_SOURCE_DIR}/imconfig.h
-  ${ImGui_SOURCE_DIR}/imgui.h
-  ${ImGui_SOURCE_DIR}/imgui_internal.h # not actually public, but users might need it
-  ${ImGui_SOURCE_DIR}/imstb_rectpack.h
-  ${ImGui_SOURCE_DIR}/imstb_textedit.h
-  ${ImGui_SOURCE_DIR}/imstb_truetype.h
-  ${ImGui_SOURCE_DIR}/misc/cpp/imgui_stdlib.h
-)
+  list(APPEND SKIG_LIBRARIES "cimgui")
 
-add_library(ImGui SHARED
-  ${IMGUI_PUBLIC_HEADERS}
-  ${IMGUI_SOURCES}
-)
+  add_compile_definitions(SKIG_USE_CIMGUI)
+else()
+  include("cmake/ImGui.cmake")
 
-target_include_directories(ImGui
-PUBLIC
-  ${ImGui_SOURCE_DIR}
-)
-
-set_target_properties(ImGui PROPERTIES
-  PUBLIC_HEADER "${IMGUI_PUBLIC_HEADERS}"
-)
+  list(APPEND SKIG_LIBRARIES "ImGui")
+endif()
 
 # StereoKitImGui #
 
@@ -83,8 +65,7 @@ PRIVATE
 )
 
 target_link_libraries(StereoKitImGui
-  ImGui
-  StereoKitC
+  ${SKIG_LIBRARIES}
 )
 
 # StereoKitImGui example #
@@ -104,8 +85,7 @@ PRIVATE
 )
 
 target_link_libraries(StereoKitImGuiExample
-  ImGui
-  StereoKitC
+  ${SKIG_LIBRARIES}
   StereoKitImGui
 )
 
