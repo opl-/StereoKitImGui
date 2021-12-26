@@ -45,11 +45,27 @@ Changing the StereoKit or ImGui version can be done using `CMakeLists.txt`. This
 
 This repository contains a prebuilt [`imgui_shader.hlsl.h`](https://github.com/maluoi/sk_gpu/blob/master/skshader_editor/imgui_shader.hlsl.h) from [sk_gpu](https://github.com/maluoi/sk_gpu). If using a different version of StereoKit, you might need to copy a compiled version or build it manually using the shader compiler or editor available, both of which are available from that repository.
 
-Use CMake to generate build files:
+Use CMake to generate the build configuration and run the build:
 
 ```sh
-cmake --build . --parallel 4 --config Release
+# Create a build directory
+mkdir build
+cd build
+
+# Generate a build configuration. See the "configuring your build" section for more options.
+cmake ..
+
+# You can now build the project
+cmake --build . --parallel 4
 ```
+
+### Configuring your build
+
+You can use these options to adjust the build:
+
+- `-G` to change the build tool.
+
+- `-D CMAKE_BUILD_TYPE=Debug` to include debug symbols.
 
 
 ## Using in your project
