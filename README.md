@@ -77,7 +77,13 @@ You can use these options to adjust the build:
 ```cmake
 # ...
 
-CPMAddPackage("gh:opl-/StereoKitImGui@1.0.0")
+CPMAddPackage(
+  NAME StereoKitImGui
+  GITHUB_REPOSITORY opl-/StereoKitImGui
+  GIT_TAG v1.0.0
+# OPTIONS
+#   "SKIG_USE_CIMGUI ON"
+)
 
 target_link_libraries(yourProject StereoKitImGui)
 ```
