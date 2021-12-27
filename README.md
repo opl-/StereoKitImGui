@@ -1,8 +1,8 @@
-# StereoKit + ImGui
+# StereoKit + Dear ImGui
 
-The code in this repository integrates ImGui into StereoKit (using sk_gpu for rendering).
+The code in this repository integrates Dear ImGui into StereoKit (using sk_gpu for rendering).
 
-ImGui is rendered into a StereoKit render target texture (`tex_t`).
+It aids in rendering Dear ImGui draw lists into a StereoKit render target texture (`tex_t`), while leaving all control in the user's hands.
 
 
 ## Usage
@@ -13,21 +13,21 @@ SKIG tries to do as little as possible. The user is expected to:
 
 During application initialization:
 
-- set up an ImGui context and font,
+- set up a Dear ImGui context and font,
 - call `skig_init` to initialize the font atlas texture,
 - set up a StereoKit render target.
 
 During application step:
 
 - call `skig_begin` to save the default render pipeline state,
-- render as many ImGui contexts as wanted:
-	- update ImGui IO state,
+- render as many Dear ImGui contexts as wanted:
+	- update Dear ImGui IO state,
 	- draw widgets as usual,
 	- call `ImGui::Render()`,
 	- call `skig_render(renderTarget)`, which will call `ImGui::GetDrawData()` and render it to the passed in texture,
 - call `skig_end` to restore the render pipeline state for main viewport.
 
-During application exit, or when you want to free memory used by ImGui:
+During application exit, or when you want to free memory used by Dear ImGui:
 
 - call `skig_destroy`.
 
@@ -41,7 +41,7 @@ During application exit, or when you want to free memory used by ImGui:
 
 ## Build
 
-Changing the StereoKit or ImGui version can be done using `CMakeLists.txt`. This might become configurable in the future.
+Changing the StereoKit or Dear ImGui version can be done using `CMakeLists.txt`. This might become configurable in the future.
 
 This repository contains a prebuilt [`imgui_shader.hlsl.h`](https://github.com/maluoi/sk_gpu/blob/master/skshader_editor/imgui_shader.hlsl.h) from [sk_gpu](https://github.com/maluoi/sk_gpu). If using a different version of StereoKit, you might need to copy a precompiled version, or build it manually using the shader compiler or editor, both of which are available in that repository.
 
@@ -67,7 +67,7 @@ You can use these options to adjust the build:
 
 - `-D CMAKE_BUILD_TYPE=Debug` to include debug symbols.
 
-- `-D SKIG_USE_CIMGUI` to link against [cimgui](https://github.com/cimgui/cimgui) instead of [ImGui](https://github.com/ocornut/imgui).
+- `-D SKIG_USE_CIMGUI` to link against [cimgui](https://github.com/cimgui/cimgui) instead of [Dear ImGui](https://github.com/ocornut/imgui).
 
 
 ## Using in your project

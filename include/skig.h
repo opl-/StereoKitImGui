@@ -31,7 +31,7 @@ SKIG_API bool skig_init();
 // Save current render state to allow restoring it lter with skig_end
 SKIG_API void skig_begin();
 
-// Render draw data returned by ImGui for the current context
+// Render draw data returned by Dear ImGui for the current context
 SKIG_API void skig_render(sk::tex_t renderTarget);
 
 // Restore previously saved render state

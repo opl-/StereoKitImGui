@@ -24,7 +24,7 @@ CPMAddPackage(
 
 list(APPEND SKIG_LIBRARIES "StereoKitC")
 
-# ImGui #
+# Dear ImGui #
 
 if(SKIG_USE_CIMGUI)
   CPMAddPackage(

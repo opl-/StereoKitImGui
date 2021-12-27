@@ -24,7 +24,7 @@ int main(void) {
 	if (!sk_init(settings))
 		return 1;
 
-	// Setup ImGui
+	// Setup Dear ImGui
 	ImGui::CreateContext();
 
 	ImGuiIO& io = ImGui::GetIO();

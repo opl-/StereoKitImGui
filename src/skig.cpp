@@ -214,7 +214,7 @@ void skig_render(tex_t renderTarget) {
 		// Update index buffer
 		skig_ensureMarshalSize(&indexBuffer, drawList->IdxBuffer.Size, sizeof(int32_t));
 
-		// ImGui uses int16 for indices, skg uses int32
+		// Dear ImGui uses int16 for indices, skg uses int32
 		for (size_t i = 0; i < drawList->IdxBuffer.Size; i++) {
 			((int32_t*) indexBuffer.marshal)[i] = drawList->IdxBuffer[i];
 		}
